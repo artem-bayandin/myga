@@ -3,6 +3,24 @@ const input2 = document.getElementById('num2');
 const cbx = document.getElementById('cbx');
 const don = document.getElementById('dn');
 
+function red(msg) {
+	lbl(msg, 'red')
+}
+
+function green(msg) {
+	lbl(msg, 'green')
+}
+
+function lbl(msg, color) {
+	dn.innerText = msg
+	dn.style.setProperty('background-color',color)
+	dn.style.setProperty('display', 'block')
+
+	setTimeout(() => {
+		dn.style.setProperty('display', 'none')
+	}, 1500)
+}
+
 document.getElementById('run-vasya-run').addEventListener('click', async () => {
 	let num1 = parseFloat(input1.value) || 0;
 	if (num1 < 0) { num1 = 0 }
@@ -12,7 +30,7 @@ document.getElementById('run-vasya-run').addEventListener('click', async () => {
 
 	const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
-	if (tab?.id) {
+	if (tab?.id && new URL(tab.url).host.endsWith('youtube.com')) {
 		chrome.scripting.executeScript({
 			target: { tabId: tab.id },
 			func: (n1, n2, inlined) => {
@@ -66,10 +84,8 @@ document.getElementById('run-vasya-run').addEventListener('click', async () => {
 			args: [num1, num2, dis],
 		});
 
-		dn.style.setProperty('display', 'block')
-
-		setTimeout(() => {
-			dn.style.setProperty('display', 'none')
-		}, 1500)
+		green('done')
+	} else {
+		red('not a YT page')
 	}
 });

@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "Make Youtube Great Again",
 	"version": "1.0",
-	"description": "Set the number of videos and shorts in a row",
+	"description": "Set comfortable number of videos and shorts in a row on a YouTube index page",
 	"action": {
 		"default_popup": "index.html",
 		"default_icon": {
@@ -14,7 +14,6 @@
 	"permissions": [
 		"tabs",
 		"activeTab",
-		"storage",
 		"scripting"
 	],
 	"icons": {
