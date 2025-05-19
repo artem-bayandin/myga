@@ -6,9 +6,9 @@
 	"action": {
 		"default_popup": "index.html",
 		"default_icon": {
-			"16": "vite.svg",
-			"48": "vite.svg",
-			"128": "vite.svg"
+			"16": "vite.png",
+			"48": "vite.png",
+			"128": "vite.png"
 		}
 	},
 	"permissions": [
@@ -18,8 +18,8 @@
 		"scripting"
 	],
 	"icons": {
-		"16": "vite.svg",
-		"48": "vite.svg",
-		"128": "vite.svg"
+		"16": "vite.png",
+		"48": "vite.png",
+		"128": "vite.png"
 	}
 }
