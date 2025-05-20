@@ -15,11 +15,17 @@ function lbl(msg, color) {
 	dn.innerText = msg
 	dn.style.setProperty('background-color',color)
 	dn.style.setProperty('display', 'block')
-
 	setTimeout(() => {
 		dn.style.setProperty('display', 'none')
 	}, 1500)
 }
+
+const lvn1 = +localStorage.getItem('myga::num1')
+const lvn2 = +localStorage.getItem('myga::num2')
+const lvc1 = +localStorage.getItem('myga::cbx')
+if (lvn1 && lvn1 > 0) {input1.value = lvn1;}
+if (lvn2 && lvn2 > 0) {input2.value = lvn2;}
+if (lvc1) {cbx.checked = true;}
 
 document.getElementById('run-vasya-run').addEventListener('click', async () => {
 	let num1 = parseFloat(input1.value) || 0;
@@ -83,7 +89,9 @@ document.getElementById('run-vasya-run').addEventListener('click', async () => {
 			},
 			args: [num1, num2, dis],
 		});
-
+		if (num1 && num1 > 0) {localStorage.setItem('myga::num1', num1);}
+		if (num2 && num2 > 0) {localStorage.setItem('myga::num2', num2);}
+		{localStorage.setItem('myga::cbx', dis ? '1' : '');}
 		green('done')
 	} else {
 		red('not a YT page')
